@@ -7,11 +7,14 @@ type Props = {
 }
 
 export default async function PostsPage(
+  // クエリパラメータの受け取り
   {searchParams}: {searchParams: Promise<Props>}
 ) {
+  // クエリパラメータの取得
   const resolvedSearchParams = await searchParams;
   const query = resolvedSearchParams.search || '';
 
+  // クエリパラメータを用いて記事の取得
   const posts = query ? await searchPosts(query) as Post[] : await getPosts() as Post[]
 
   return (

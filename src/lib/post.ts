@@ -1,3 +1,5 @@
+// 記事に関するサーバー関数
+
 import { prisma } from "@/lib/prisma"
 
 export async function getPosts() {

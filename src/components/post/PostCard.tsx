@@ -4,6 +4,7 @@ import { ja } from 'date-fns/locale'
 import Link from "next/link"
 import Image from 'next/image'
 
+// shacnの利用
 import {
   Card,
   CardContent,
@@ -16,7 +17,8 @@ import { PostCardProps } from "@/types/post"
 export default function PostCard({post}: PostCardProps) {
   return (
     <Card className="hover:shadow-lg transition-shadow">
-      <Link href={`/posts/${post.id}`}>
+      {/* 動的ルーティング */}
+      <Link href={`/posts/${post.id}`}> 
         {post.topImage && (
           <div className='relative w-full h-48'>
             <Image

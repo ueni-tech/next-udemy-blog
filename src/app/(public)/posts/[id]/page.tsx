@@ -14,7 +14,9 @@ type Props = {
   params: Promise<{ id: string }>
 }
 
+
 export default async function Postpage({ params }: Props) {
+  // 動的セグメント[id]の値をparamsから取得する
   const { id } = await params;
   const post = await getPost(id);
 
