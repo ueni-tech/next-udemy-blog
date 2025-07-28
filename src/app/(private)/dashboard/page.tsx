@@ -2,11 +2,12 @@ import { getOwnPosts } from "@/lib/ownPost"
 import { auth } from "@/auth"
 import PostDropdownMenu from "@/components/post/PostDropdownMenu";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default async function DashBoardPage() {
   const session = await auth();
   const userId = session?.user?.id
-  if(!session?.user?.email || !userId){
+  if (!session?.user?.email || !userId) {
     throw new Error('不正なリクエストです')
   }
 
@@ -15,7 +16,11 @@ export default async function DashBoardPage() {
     <div className="p-4">
       <div className="flex justify-between">
         <h1 className="text-2xl font-bold mb-4">記事一覧</h1>
-        <Button>新規記事作成</Button>
+        <Button>
+          <Link href="/manage/posts/create">
+            新規記事作成
+          </Link>
+        </Button>
       </div>
       <table className="table-auto w-full border-collapse border">
         <thead>
@@ -27,7 +32,7 @@ export default async function DashBoardPage() {
           </tr>
         </thead>
         <tbody>
-          {posts.map( post => (
+          {posts.map(post => (
             <tr key={post.id}>
               <td className="border p-2">{post.title}</td>
               <td className="border p-2 text-center">
