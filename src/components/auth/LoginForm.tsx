@@ -17,7 +17,7 @@ export default function LoginForm() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
   // Action Stateを利用(Server Actionの状態をクライアントで取得するHook)
-  const [errorMessage, formAction, isPending] = useActionState(
+  const [errorMessage, formAction] = useActionState(
     // authenticateはServer Action
     authenticate,
     undefined,
