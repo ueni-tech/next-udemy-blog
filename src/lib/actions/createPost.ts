@@ -24,7 +24,7 @@ export async function createPost(
     return { success: false, errors: validationResult.error.flatten().fieldErrors}
   }
 
-  const imageUrl = topImage ? saveImage(topImage) : null;
+  const imageUrl = topImage ? await saveImage(topImage) : null;
   if(topImage && !imageUrl){
     return { success: false, errors: {image: ['画像の保存に失敗しました']}}
   }
